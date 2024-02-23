@@ -1,0 +1,70 @@
+1.) Initialize game
+  -Create deck of cards (only 1)
+  -Shuffle deck (random method?)
+  -Set player bankroll to $1000
+  -Set default bet to $25
+  -No bet max limit
+
+
+2.) Start new game
+  -Check if bankroll is at least minimum bet ($25), if not, end game with message "Not enough chips to continue
+  -Ask player to place bet, ensuring it's above the minimum
+
+
+3.) Deal initial cards
+  -Deal two cards to the player and two cards to the dealer, with one card face down for the dealer
+  -Calculate and display scores
+
+
+4.) Player Rules
+  -Allow 'Double Down' only as the first action after dealing the initial two cards
+      -This doubles the bet and deals one final card to the player
+  -Allow 'Split' only as the first action if the player has a pair, creating two separate hands to play in turn
+	-Normal rules apply after the 'split' has been enacted
+
+
+5.) Player's turn
+  -Player can choose to 'Hit' to receive additional cards until they decide to 'Stand' or their score exceeds 21 (bust)
+  -Update the player's score after each action.
+
+
+6.) Dealer rules
+  -Reveal the dealer's face-down card
+  -The dealer stands on a soft 17 (an Ace and a 6)
+  -If the dealer's score is less than 17, continue to deal cards to the dealer until the score is soft 17 or higher
+  -If dealer's score exceeds 21 dealer busts
+
+
+7.) Determine outcome
+  -If player busts, dealer wins
+  -If dealer busts, player wins
+  -If player's score is higher than dealer's score, player wins
+  -If dealer's score is higher, dealer wins
+  -If scores are equal, it's a push
+
+
+8.) Update bankroll
+  -If player wins with Blackjack, increase bankroll by 1.5 times bet
+  -If player wins normally, increase bankroll by bet amount
+  -If dealer wins, decrease bankroll by bet amount
+  -If push, bankroll remains the same
+
+
+9.) Display outcome
+  -Show player's and dealer's final scores
+  -Show win/loss message
+  -Update player's profit/loss
+
+
+10.) Ask player for next action
+  -Player can increase/decrease bet, start a new game, or quit
+
+
+11.) End of game
+  -If player quits, game ends
+  -Show player's final bankroll and total profit/loss
+
+
+(Simplify)
+
+shuffle: fisher yates shuffle algo
