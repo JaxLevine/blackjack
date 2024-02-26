@@ -1,6 +1,6 @@
 1.) Initialize game
   -Create deck of cards (only 1)
-  -Shuffle deck (random method?)
+  -Shuffle deck (random method?) (shuffle: fisher yates shuffle algo - ashley)
   -Set player bankroll to $1000
   -Set default bet to $25
   -No bet max limit
@@ -67,4 +67,3 @@
 
 (Simplify)
 
-shuffle: fisher yates shuffle algo

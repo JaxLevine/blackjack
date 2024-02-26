@@ -1,0 +1,24 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dealer-cards img{
+  height: 275px;
+  margin: 4px;
+}
+
+.hit-button {
+  height: 45px;
+  width: 90px;
+}
+
+.stay-button {
+  height: 45px;
+  width: 90px;
+}
