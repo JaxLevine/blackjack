@@ -1,52 +1,74 @@
 /*----- constants -----*/
 
 /*----- app's state (variables) -----*/
-// let deck;
-// let dealerHand;
-// let playerHand;
-// let dealerTotal;
-// let playerTotal;
-let shuffledDeck = shuffleDeck(deck);
-let hands = dealCards(deck)
+let completeDeck = createDeck(); // Full and proper deck
+let shuffledDeck = shuffleDeck(completeDeck); // Full deck shuffled
+let dealtHands = dealCards() //Hands for player and dealer (that have been dealt)
+
 /*----- cached element references -----*/
 
 /*----- event listeners -----*/
 
 /*----- functions -----*/
 
+//Create the deck//
 function createDeck() {
   const cards = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
   const suits = ['H', 'S', 'D', 'C'];
-  let deck = [];
+  let completeDeck = [];
 
   for (let x = 0; x < cards.length; x++) {
     for (let y = 0; y < suits.length; y++) {
-      deck.push(`${cards[x]}-${suits[y]}`);
+      completeDeck.push(`${cards[x]}-${suits[y]}`);
     }
   }
-  return deck;
+  return completeDeck;
 }
 
-function shuffleDeck(deck) {
-  for (let x = 0; x < deck.length; x++) {
-    let randomNum = Math.floor(Math.random() * deck.length);
-    let currentCard = deck[x];
-    deck[x] = deck[randomNum];
-    deck[randomNum] = currentCard;
+//Shuffle the deck//
+function shuffleDeck(completeDeck) {
+  for (let x = 0; x < completeDeck.length; x++) {
+    let randomNum = Math.floor(Math.random() * completeDeck.length);
+    let currentCard = completeDeck[x];
+    completeDeck[x] = completeDeck[randomNum];
+    completeDeck[randomNum] = currentCard;
   }
-  console.log(`Shuffled Deck: ${deck}`);
+  console.log(`Shuffled Deck: ${completeDeck}`);
+  return completeDeck;
+} 
+
+//Dealing cards//
+function dealCards() {
+  let playerHand = [completeDeck.pop(), completeDeck.pop()];
+  let dealerHand = [completeDeck.pop(), completeDeck.pop()];
+  return {playerHand, dealerHand};
 }
 
-//more game variables//
-let playerHand = [];
-let dealerHand = [];
-let deck = shuffleDeck(createDeck());
+//Displaying cards//
+function displayCards(playerHand, dealerHand) {
+  console.log(`Dealer's Hand: ${dealerHand[0]}, [hidden]`)
+  console.log(`Player's Hand: ${playerHand[0]}, ${playerHand[1]}]`)
+} displayCards(dealtHands.playerHand, dealtHands.dealerHand);
 
-function dealCards () {
-  playerHand.push(deck.pop(), deck.pop());
-  dealerHand.push(deck.pop(), deck.pop());
-  update();
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
