@@ -21,10 +21,6 @@ let standAction = document.querySelector('#stayButton');
 hitAction.addEventListener('click', playerHits);
 standAction.addEventListener('click', playerStands);
 
-
-//----- Order Of Functionality ----- //
-
-
 //-------------------------------- Create Deck ---------------------------------//
 
 // Create // 
@@ -183,8 +179,6 @@ function updateScores(showDealerScore) {
 
 
 //----------------------------- Restarting Game --------------------------------//
-
-
 
 
 
