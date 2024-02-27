@@ -22,7 +22,10 @@ hitAction.addEventListener('click', playerHits);
 standAction.addEventListener('click', playerStands);
 
 
-//--------------------------- Create Deck -----------------------------//
+//----- Order Of Functionality ----- //
+
+
+//-------------------------------- Create Deck ---------------------------------//
 
 // Create // 
 function createDeck() {
@@ -35,7 +38,7 @@ function createDeck() {
   return completeDeck;
 }
 
-//--------------------------- Shuffle Deck -----------------------------//
+//------------------------------ Shuffle Deck ----------------------------------//
 
 // Shuffle //
 function shuffleDeck(completeDeck) {
@@ -49,62 +52,71 @@ function shuffleDeck(completeDeck) {
   return completeDeck;
 }
 
-//-------------------------- Deal and Display Cards ---------------------------//
+//----------------------- Deal Hands and Display Cards -------------------------//
 
-// Deal //
+// Deal Hands //
 function dealCards() {
   let playerHand = [shuffledDeck.pop(), shuffledDeck.pop()];
   let dealerHand = [shuffledDeck.pop(), shuffledDeck.pop()];
-  return {playerHand, dealerHand};
+  return { playerHand, dealerHand };
 }
 
 // Display //
-function displayCards(playerHand, dealerHand, dontRevealDealer = false) {
+function displayCards(playerHand, dealerHand) {
   console.log(`Dealer's Hand: ${dealerHand[0]}, [hidden]`);
   console.log(`Player's Hand: ${playerHand[0]}, ${playerHand[1]}`);
-  dealerFaceUpCard.src = `./cards/${dealerHand[1]}.png`;
-  if (!dontRevealDealer) {
-    dealerFaceDown.src = `./cards/BACK.png`;
-  }
-  playerCardOne.src = `./cards/${playerHand[0]}.png`;
-  playerCardTwo.src = `./cards/${playerHand[1]}.png`;
-} 
 
-//--------------------------- Player Action -----------------------------//
+  dealerFaceUpCard.src = `./cards/${dealerHand[1]}.png`; // Dealer face-up display
+  playerCardOne.src = `./cards/${playerHand[0]}.png`; // Player card one
+  playerCardTwo.src = `./cards/${playerHand[1]}.png`; // Player card two
+}
+
+//------------------------------ Player Action ---------------------------------//
 
 // Hit //
 function playerHits() {
   let newCard = shuffledDeck.pop(); // Gets the new card from the deck
   playerHand.push(newCard); // Adds new card to player's hand
-  //  create new <img> element for the new card and append it
+
+  // Adds new card to display after action
   const newCardPng = document.createElement('img');
-  newCardPng.src = `./cards/${newCard}.png`; // Set the source of the new card image
+  newCardPng.src = `./cards/${newCard}.png`;
   newCardPng.style.height = '275px';
   newCardPng.style.margin = '4px';
-  document.querySelector('.player-cards').appendChild(newCardPng); // Appends as a child to player cards class
-  
+  document.querySelector('.player-cards').appendChild(newCardPng);
+
   if (calculateScore(playerHand) > 21) {   // See if player busted after the hit
     console.log('Sorry Brother, You Busted.');
   }
+  updateScores(false)
 }
 
 // Stand //
 function playerStands() {
   dealerMove();
-}
-
-//--------------------------- Dealer Action -----------------------------//
-
-//Dealer Move
-function dealerMove() {
-  while (calculateScore(dealerHand) < 17) {
-    dealerHand.push(shuffledDeck.pop());
-  }
-  dealerFaceDown.src = `./cards/${dealerHand[0]}.png`; //reveals facdown card now
   checkForWinner();
 }
 
-//--------------------------- Calculations -----------------------------//
+//------------------------------ Dealer Action ---------------------------------//
+
+// Dealer Move //
+function dealerMove() {
+  while (calculateScore(dealerHand) <= 17) {
+    let newCard = shuffledDeck.pop(); // Gets new card if needed
+    dealerHand.push(newCard);
+
+    // Adds new card to display after action
+    const dealerNewCardPng = document.createElement('img');
+    dealerNewCardPng.src = `./cards/${newCard}.png`;
+    dealerNewCardPng.style.height = '275px';
+    dealerNewCardPng.style.margin = '4px';
+    document.querySelector('.dealer-cards').appendChild(dealerNewCardPng);
+  }
+  dealerFaceDown.src = `./cards/${dealerHand[0]}.png`; //Flips dealer's card
+  updateScores(true);
+}
+
+//------------------------------- Calculations ---------------------------------//
 
 // Calculate Scores //
 function calculateScore(hand) {
@@ -131,7 +143,7 @@ function calculateScore(hand) {
   return score;
 }
 
-//--------------------------- Determining Winner -----------------------------//
+//---------------------------- Determining Winner ------------------------------//
 
 // Checking Winner //
 function checkForWinner() {
@@ -151,7 +163,32 @@ function checkForWinner() {
   }
 }
 
-//--------------------------- Initialize Game -----------------------------//
+//------------------------------ Update Scores ---------------------------------//
+
+  let showDealerScore = false // Keeps facedown cards total hidden
+function updateScores(showDealerScore) {
+  playerScore = calculateScore(playerHand);
+  dealerScore = calculateScore(dealerHand);
+   
+  //Display Player Score 
+  document.getElementById('playerScore').textContent = `Total: ${playerScore}`;
+    
+  //Display Dealer Score 
+  if (showDealerScore === true) { 
+    document.getElementById('dealerScore').textContent = `Dealer's Score: ${dealerScore}`;
+  } else {
+    document.getElementById('dealerScore').textContent = `Dealer's Score: [Hidden]`;
+  }
+} updateScores()
+
+
+//----------------------------- Restarting Game --------------------------------//
+
+
+
+
+
+//----------------------------- Initialize Game -------------------------------//
 
 // Start Game //
 function init() {
