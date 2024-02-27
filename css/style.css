@@ -13,12 +13,22 @@ body {
   margin: 4px;
 }
 
-.hit-button {
+#faceDown {
+  height: 275px;
+  width: 198px;
+}
+
+.player-cards img{
+  height: 275px;
+  margin: 4px;  
+}
+
+#hitButton {
   height: 45px;
   width: 90px;
 }
 
-.stay-button {
+#stayButton {
   height: 45px;
   width: 90px;
 }
