@@ -14,12 +14,14 @@ let dealerFaceUpCard = document.querySelector('#faceUp');
 let dealerFaceDown = document.querySelector('#faceDown');
 let playerCardOne = document.querySelector('#playerCardOne');
 let playerCardTwo = document.querySelector('#playerCardTwo');
+let doubleAction = document.querySelector('#doubleButton');
 let hitAction = document.querySelector('#hitButton');
 let standAction = document.querySelector('#stayButton');
 let hitRestart = document.querySelector('#restart');
 let gameOutcome = document.querySelector('#gameOutcome');
 
 //----- event listeners ----- //
+doubleAction.addEventListener('click', playerDoubles);
 hitAction.addEventListener('click', playerHits);
 standAction.addEventListener('click', playerStands);
 hitRestart.addEventListener('click', function() {
@@ -74,6 +76,22 @@ function displayCards(playerHand, dealerHand) {
 
 //------------------------------ Player Action ---------------------------------//
 
+// Double //
+function playerDoubles() {
+  newCard = shuffledDeck.pop();
+  playerHand.push(newCard)
+
+  newCardPng = document.createElement('img');
+  newCardPng.src = `./cards/${newCard}.png`;
+  newCardPng.style.height = '275px';
+  newCardPng.style.margin = '4px';
+  document.querySelector('.player-cards').appendChild(newCardPng);
+  updateScores();
+  dealerMove();
+  checkForWinner();
+}
+
+
 // Hit //
 function playerHits() {
   let newCard = shuffledDeck.pop(); // Gets the new card from the deck
@@ -99,6 +117,7 @@ function playerStands() {
   dealerMove();
   checkForWinner();
 }
+
 
 //------------------------------ Dealer Action ---------------------------------//
 

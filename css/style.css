@@ -27,6 +27,21 @@ body {
   margin: 4px;  
 }
 
+#doubleButton {
+  background-color: #4CAF50; 
+  color: white;
+  height: 45px;
+  width: 85px;
+  font-size: 16px;
+  margin: 4px 2px;
+  border: none;
+  border-radius: 30px;
+}
+
+#doubleButton:hover {
+  background-color: #3c9040;
+}
+
 #hitButton {
   background-color: #4CAF50; 
   color: white;
