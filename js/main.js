@@ -87,9 +87,11 @@ function playerHits() {
   document.querySelector('.player-cards').appendChild(newCardPng);
 
   if (calculateScore(playerHand) > 21) {   // See if player busted after the hit
-    console.log('Sorry Brother, You Busted.');
+    dealerFaceDown.src = `./cards/${dealerHand[0]}.png`; // Reveal dealer's facedown card
+    updateScores(true); // Update scores showing dealer's score
+    gameOutcome.innerHTML = 'You Busted, Dealer Wins.';
   }
-  updateScores(false)
+  updateScores()
 }
 
 // Stand //
@@ -153,7 +155,7 @@ function checkForWinner() {
   gameOutcome
 
   if (playerScore > 21) {
-    gameOutcome.innerHTML = 'You Busted.';
+    gameOutcome.innerHTML = 'You Busted, Dealer Wins.';
     // console.log('You Busted.');
   } else if (dealerScore > 21) {
     gameOutcome.innerHTML = 'Dealer Busts, You Win!'
@@ -172,7 +174,8 @@ function checkForWinner() {
 
 //------------------------------ Update Scores ---------------------------------//
 
-  let showDealerScore = false // Keeps facedown cards total hidden
+let showDealerScore = false // Keeps facedown cards total hidden
+
 function updateScores(showDealerScore) {
   playerScore = calculateScore(playerHand);
   dealerScore = calculateScore(dealerHand);

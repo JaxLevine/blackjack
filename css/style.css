@@ -73,6 +73,10 @@ body {
   background-color: #f6df5b;
 }
 
+.action-buttons {
+  margin-top: 5px;
+}
+
 #gameOutcome {
   margin-bottom: 10px;
   font-size: 40px;
