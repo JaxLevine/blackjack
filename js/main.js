@@ -16,10 +16,15 @@ let playerCardOne = document.querySelector('#playerCardOne');
 let playerCardTwo = document.querySelector('#playerCardTwo');
 let hitAction = document.querySelector('#hitButton');
 let standAction = document.querySelector('#stayButton');
+let hitRestart = document.querySelector('#restart');
+let gameOutcome = document.querySelector('#gameOutcome');
 
 //----- event listeners ----- //
 hitAction.addEventListener('click', playerHits);
 standAction.addEventListener('click', playerStands);
+hitRestart.addEventListener('click', function() {
+  location.reload();
+})
 
 //-------------------------------- Create Deck ---------------------------------//
 
@@ -145,17 +150,23 @@ function calculateScore(hand) {
 function checkForWinner() {
   let playerScore = calculateScore(playerHand);
   let dealerScore = calculateScore(dealerHand);
+  gameOutcome
 
   if (playerScore > 21) {
-    console.log('You Busted.');
+    gameOutcome.innerHTML = 'You Busted.';
+    // console.log('You Busted.');
   } else if (dealerScore > 21) {
-    console.log('Dealer Busts. You Win!');
+    gameOutcome.innerHTML = 'Dealer Busts, You Win!'
+    // console.log('Dealer Busts. You Win!');
   } else if (playerScore > dealerScore) {
-    console.log('You Win!');
+    gameOutcome.innerHTML = 'You Win!'
+    // console.log('You Win!');
   } else if (playerScore < dealerScore) {
-    console.log('You Lose!');
+    gameOutcome.innerHTML = 'You Lose.'
+    // console.log('You Lose!');
   } else {
-    console.log('Push.');
+    gameOutcome.innerHTML = 'Push.'
+    // console.log('Push.');
   }
 }
 
@@ -171,16 +182,11 @@ function updateScores(showDealerScore) {
     
   //Display Dealer Score 
   if (showDealerScore === true) { 
-    document.getElementById('dealerScore').textContent = `Dealer's Score: ${dealerScore}`;
+    document.getElementById('dealerScore').textContent = `Total: ${dealerScore}`;
   } else {
-    document.getElementById('dealerScore').textContent = `Dealer's Score: [Hidden]`;
+    document.getElementById('dealerScore').textContent = `Total: [Hidden]`;
   }
 } updateScores()
-
-
-//----------------------------- Restarting Game --------------------------------//
-
-
 
 //----------------------------- Initialize Game -------------------------------//
 
@@ -190,3 +196,4 @@ function init() {
 }
 
 init();
+

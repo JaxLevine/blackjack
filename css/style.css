@@ -3,9 +3,12 @@
 }
 
 body {
+  margin-top: 100px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: linear-gradient(to right, #064c18, #33763f, #184f0b);
+  color: #fff; 
 }
 
 .dealer-cards img{
@@ -14,8 +17,9 @@ body {
 }
 
 #faceDown {
-  height: 275px;
+  height: 272px;
   width: 198px;
+  margin-bottom: 6px;
 }
 
 .player-cards img{
@@ -24,11 +28,55 @@ body {
 }
 
 #hitButton {
+  background-color: #4CAF50; 
+  color: white;
   height: 45px;
-  width: 90px;
+  width: 85px;
+  font-size: 16px;
+  margin: 4px 2px;
+  border: none;
+  border-radius: 30px;
+}
+
+#hitButton:hover {
+  background-color: #3c9040;
 }
 
 #stayButton {
+  background-color: #4CAF50; 
+  color: white;
   height: 45px;
-  width: 90px;
+  width: 85px;
+  font-size: 16px;
+  margin: 4px 2px;
+  border: none;
+  border-radius: 30px;
+  margin-bottom:10px;
 }
+
+#stayButton:hover {
+  background-color: #3c9040;
+}
+
+#restart {
+  background-color: #FFD700; 
+  color: black;
+  height: 45px;
+  width: 85px;
+  font-size: 16px;
+  margin: 4px 2px;
+  border: none;
+  border-radius: 30px;
+}
+
+#restart:hover {
+  background-color: #f6df5b;
+}
+
+#gameOutcome {
+  margin-bottom: 10px;
+  font-size: 40px;
+  font-weight: bolder;
+  color: #FFD700; 
+}
+
