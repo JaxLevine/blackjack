@@ -146,7 +146,7 @@ function calculateScore(hand) {
   let aces = 0;
 
   hand.forEach(function (card) {
-    let cardValue = card.split('-')[0];
+    let cardValue = card.split('-')[0]; // grabbing the vard value and removing suit
     if (cardValue === 'A') {
       aces += 1;
       score += 11;
@@ -193,7 +193,7 @@ function checkForWinner() {
 
 //------------------------------ Update Scores ---------------------------------//
 
-let showDealerScore = false // Keeps facedown cards total hidden
+let showDealerScore = false // Keeps facedown cards total hidden at first
 
 function updateScores(showDealerScore) {
   playerScore = calculateScore(playerHand);
