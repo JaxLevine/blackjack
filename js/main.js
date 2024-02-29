@@ -109,7 +109,7 @@ function playerHits() {
     updateScores(true); // Update scores showing dealer's score
     gameOutcome.innerHTML = 'You Busted, Dealer Wins.';
   }
-  updateScores()
+  updateScores();
 }
 
 // Stand //

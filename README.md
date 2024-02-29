@@ -1,5 +1,5 @@
 # Blackjack Game
-A description of your game. Background info of the game is a nice touch.
+This project is a simple implementation of the classic card game, Blackjack, also known as 21. The game is designed to be run in a web browser and offers a straightforward interface for playing against the computer dealer.
 
 # Screenshot
 
