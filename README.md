@@ -3,8 +3,7 @@ This project is a simple implementation of the classic card game, Blackjack, als
 
 # Screenshot
 
-<img src="url to your image on imgur">
-<img src="url to your image on imgur">
+<img src="Blackjack.png">
 
 # Technologies Used
 
@@ -15,10 +14,8 @@ This project is a simple implementation of the classic card game, Blackjack, als
 
 # Getting Started
 
-[Click to View Project Planning](your Trello url here)
-[Click to Play Connect Four!](your deployment url here)
+https://jaxlevine.github.io/blackjack/
 
 # Next Steps
 
-- Future enhancement one...
-- Future enhancement two... 
+- Adding bankroll functionality and a beting log
