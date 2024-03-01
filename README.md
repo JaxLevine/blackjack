@@ -18,4 +18,4 @@ https://jaxlevine.github.io/blackjack/
 
 # Next Steps
 
-- Adding bankroll functionality and a beting log
+- Adding bankroll functionality and a betting log
